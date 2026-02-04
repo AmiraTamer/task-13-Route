@@ -99,8 +99,6 @@ function displayTask(list) {
             editTaskById(id);
         });
     });
-    //  Initialize  
-    displayTask(taskList);
     //delete button
     document.querySelectorAll(".delete-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -125,6 +123,8 @@ function clearInputs() {
     taskTextAreaInput.value = "";
     selectPriority.value = "Medium";
     taskDateInput.value = "";
+    titleError.classList.add("d-none");
+    taskTitleInput.classList.remove("is-invalid");
 }
 //edittttttttttttt
 function editTaskById(id) {
@@ -178,6 +178,8 @@ function deleteTaskById(id) {
     localStorage.setItem("allTasks", JSON.stringify(taskList));
     displayTask(taskList);
 }
+//  Initialize  
+displayTask(taskList);
 // Counter
 function updateTaskCounter() {
     let todoCounter = taskList.filter(task => task.status === "toDo").length;
